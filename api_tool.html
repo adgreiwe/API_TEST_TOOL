@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Rest API Test Tool</title>
+
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="custom1.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script src="custom1.js"></script>
+  </head>
+
+  <body>
+    <div class="well form-inline grey" id='requestTarget'>
+      <div class="btn-group form-group width100">
+        <button type="button" class="btn dropdown-toggle btn-select grey" id="methodSelector" data-toggle="dropdown" href="#">GET <span class="caret"></span></button>
+        <ul class="dropdown-menu">
+          <li><a href="#">GET </a></li>
+          <li class="disabled"><a href="#">POST </a></li>
+          <li class="disabled"><a href="#">PUT </a></li>
+          <li class="disabled"><a href="#">DELETE </a></li>
+        </ul>
+        <button type="button" id="goButton" class="btn btn-info inline pull-right">Go</button>
+        <input type="text" class="form-control inline pull-right" id="url" placeholder="URL">
+      </div>
+    </div>
+    <div>
+      <ul class="tab">
+        <li><a href="#" class="tablinks" id="reqTabButt">Request</a></li>
+        <li><a href="#" class="tablinks" id="respTabButt">Response</a></li>
+        <li id="tabLeftover"></li>
+      </ul>
+    </div>
+    <div class="height100">
+      <div class="grey container-fluid height100" id="request">
+        <div class="row height100">
+          <div class="grey col-sm-5 headers">
+            <div class="form-inline grey internalHeader">
+              <h4 class="inline pull-left headerLabel">Headers</h4>
+              <div class="dropdown inline pull-left btn-group">
+                <button class="btn btn-select dropdown-toggle grey" type="button" data-toggle="dropdown" id="authButton">Authentication <span class="caret"></span></button>
+                <ul class="dropdown-menu">
+                  <li><a href="#basicPopup" data-toggle="modal" data-target="#basicPopup">Basic Auth </a></li>
+                  <li><a href="#sigPopup" data-toggle="modal" data-target="#sigPopup">HTTP Auth </a></li>
+                </ul>
+              </div>
+              <button type="button" id="refreshButton" class="btn btn-info btn-sm inline pull-right">Refresh</button>
+              <div class="modal fade modal-dialog" id="basicPopup" role="dialog">
+                <div class="modal-content">
+                  <div class="modal-body">
+                    <input type="text" name="user" id="username" placeholder="Username" class="popupInput">
+                    <input type="text" name="passw" id="password" placeholder="Password" class="popupInput">
+                    <button type="btn btn-info" data-dismiss="modal" id="basicOK">OK</button>
+                  </div>
+                </div>
+              </div>
+              <div class="modal fade modal-dialog" id="sigPopup" role="dialog">
+                <div class="modal-content">
+                  <div class="modal-body">
+                    <input type="text" name="keyid_name"  value="keyid" class="popupInput" readonly>
+                    <input type="text" name="keyid_value" id="keyid-value" value="761a3f5d-541a-45e1-9af3-7125207102b6" class="popupInput">
+
+                    <input type="text" name="key_name"  value="key" class="popupInput" readonly>
+                    <input type="text" name="key_value" id="key-value" value="s-ebs-app:ebs_app-nprod-20151029" class="popupInput">
+
+                    <input type="text" name="env_name"  value="gws-environment" class="popupInput" readonly>
+                    <input type="text" name="env_value" id="env-value" value="ct" class="popupInput">
+
+                    <button type="btn btn-info" data-dismiss="modal" id="sigOK">OK</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="headerInfo">
+              <div id="basicInfo">
+                <input type="text" name="basic_name" value="Authorization" class="popupInput headerName">
+                <input type="text" name="basic_auth" id="basic-auth-value" class="popupInput headerVal lastHeader">
+                <button type="button" class="btn btn-info inline headerAdder">+</button>
+              </div>
+              <div id="sigInfo">
+                <input type="text" name="date_name" id="date-name" value="Date" class="popupInput headerName">
+                <input type="text" name="date_val" id="date-val" class="popupInput headerVal">
+
+                <input type="text" name="digest_name" id="digest-name" value="Digest" class="popupInput headerName">
+                <input type="text" name="digest_val" id="digest-val" class="popupInput headerVal">
+
+                <input type="text" name="accept_name" id="accept-name" value="Accept" class="popupInput headerName">
+                <input type="text" name="accept_val" id="accept-val" class="popupInput headerVal">
+
+                <input type="text" name="content-type_name" id="content-type-name" value="Content-Type" class="popupInput headerName">
+                <input type="text" name="content-type_val" id="content-type-val" class="popupInput headerVal">
+
+                <input type="text" name="content-length_name" id="content-length-name" value="Content-Length" class="popupInput headerName">
+                <input type="text" name="content-length_val" id="content-length-val" class="popupInput headerVal">
+
+                <input type="text" name="x-signing-string_name" id="x-signing-string-name" value="X-Signing-String" class="popupInput headerName">
+                <input type="text" name="x-signing-string_val" id="x-signing-string-val" class="popupInput headerVal">
+
+                <input type="text" name="gws-environment_name" id="gws-environment-name" value="gws-environment" class="popupInput headerName">
+                <input type="text" name="gws-environment_val" id="gws-environment-val" class="popupInput headerVal">
+
+                <input type="text" name="gws-requestid_name" id="gws-requestid-name" value="gws-requestId" class="popupInput headerName">
+                <input type="text" name="gws-requestid_val" id="gws-requestid-val" class="popupInput headerVal">
+
+                <input type="text" name="gws-version_name" id="gws-version-name" value="gws-version" class="popupInput headerName">
+                <input type="text" name="gws-version_val" id="gws-version-val" class="popupInput headerVal">
+
+                <input type="text" name="authorization_name" id="authorization-name" value="Authorization" class="popupInput headerName">
+                <input type="text" name="authorization_val" id="authorization-val" class="popupInput headerVal lastHeader">
+                <button type="button" class="btn btn-info inline headerAdder">+</button>
+              </div>
+            </div>
+          </div>
+        <div class="grey col-sm-7 height100 bodyContainer">
+          <div class="form-inline grey internalHeader">
+            <h4 class="inline pull-left">Body</h4>
+          </div>
+          <textarea class="form-control"></textarea>
+        </div>
+      </div>
+    </div>
+    <div class="grey container-fluid height100" id="response">
+      <div class="row height100">
+        <div class="headers col-sm-5">
+          <div class="form-inline grey internalHeader">
+            <h4 class="inline pull-left headerLabel">Headers</h4>
+          </div>
+          <div class="headerInfo">
+            <div id="respHeaders">
+              <!-- <input type="text" class="popupInput headerName" readonly>
+              <input type="text" class="popupInput headerVal" readonly> -->
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-7 height100 bodyContainer">
+          <div class="form-inline grey internalHeader">
+            <h4 class="inline pull-left">Body</h4>
+          </div>
+          <textarea class="form-control" readonly></textarea>
+        </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,200 @@
+body {
+	height: calc(100% - 105px);
+	min-width: 500px;
+}
+
+.grey, body {
+	background-color: #f5f5f5;
+}
+
+#requestTarget {
+	padding-top: 12px;
+	padding-bottom: 12px;
+	border: 1px solid #ccc;
+	border-bottom: none;
+	border-left: none;
+	border-right: none;
+	height: 59px;
+}
+
+#url {
+	width: calc(100% - 140px);
+}
+
+#goButton {
+	margin-left: 14px;
+}
+
+.height100 {
+	height: 100%;
+}
+
+.width100 {
+	width: 100%;
+}
+
+html {
+	width: 100%;
+	height: 100%;
+}
+
+#methodSelector {
+	padding-left: 0px;
+}
+
+.well {
+	margin: 0px;
+	border-radius: 0px;
+	background-color: #f5f5f5;
+}
+
+#tabLeftover {
+	width: calc(100% - 198px);
+	height: 40px;
+	border-bottom: 1px solid #ccc;
+	padding: 9px 16px;
+}
+
+#respTabButt {
+	border-bottom: 1px solid #ccc;
+}
+
+#reqTabButt {
+	border: 1px solid #ccc;
+	border-bottom: none;
+}
+
+ul.tab {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    border-left: none;
+    border-right: none;
+    background-color: #f5f5f5;
+}
+
+ul.tab li {float: left;}
+
+ul.tab li a {
+    display: inline-block;/
+    text-align: center;
+    padding: 9px 16px;
+    text-decoration: none;
+    transition: 0.3s;
+    font-size: 15px;
+}
+
+ul.tab li a:hover, .btn-select:hover {background-color: #ddd;}
+
+.tabcontent {
+    display: none;
+    padding: 6px 12px;
+    border: 1px solid #ccc;
+    border-top: none;
+}
+
+#request {
+	display: block;
+}
+
+#request, #response {
+	border-left: 1px solid #ccc;
+}
+
+#response {
+	display: none;
+}
+
+.dropdown-menu {
+	min-width: 0px;
+	width: 100%;
+}
+
+.headerLabel {
+	padding-left: 16px;
+	margin-right: 20px;
+}
+
+.headers {
+	margin: 0px;
+	padding: 0px;
+}
+
+#methodSelector {
+	color: #337ab7;
+}
+
+#authButton,  h4 {
+	color: #337ab7;
+	font-size: 15px;
+}
+
+.btn-select {
+	padding-bottom: 5px;
+	padding-right: 8px;
+	padding-left: 10px;
+}
+
+#authButton {
+	margin-bottom: 2px;
+}
+
+.internalHeader {
+	height: 36px;
+	margin-bottom: 2px;
+	margin-top: 5px;
+	padding-right: 16px;
+}
+
+.modal {
+	width: 405px;
+	padding: 0px;
+}
+
+.popupInput {
+	margin-bottom: 3px;
+}
+
+#basicInfo, #sigInfo {
+	display: none;
+}
+
+.headerInfo {
+	padding-left: 15px;
+	padding-top: 12px;
+}
+
+.newHeader {
+	margin-right: 4px;
+}
+
+.headerName {
+	width: 120px;
+}
+
+.headerVal {
+	width: calc(100% - 125px);
+}
+
+#refreshButton {
+	display: none;
+	margin-top: 5px;
+}
+
+.lastHeader {
+	width: calc(100% - 160px);
+}
+
+.headerAdder {
+	padding: 2px 8px;
+	margin-top: -2px;
+	margin-left: 2px;
+}
+
+textarea.form-control {
+	resize: none;
+	height: calc(100% - 66px);
+	margin-top: 13px;
+	border-radius: 0px;
+}
